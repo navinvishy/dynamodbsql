@@ -8,24 +8,22 @@ query or scan request. The translator supports SQL queries of the form:
 
 where
 ```
-projection_list := '*' | columns
-boolean_condition := 
-    column op_symbol value 
-    | function_expr 
-    | and_expr 
-    | or_expr 
-    | not_expr
-op_symbol := '=' | '>' | '<' | '>=' | '<=' | '!='
-function_expr :=
-    attribute_exists (path) 
-    | attribute_not_exists (path) 
-    | attribute_type (path, type) 
-    | begins_with (path, substr) 
-    | contains (path, operand)
-    | size (path)
-and_expr := boolean_condition and boolean_condition
-or_expr := boolean_condition or boolean_condition
-not_expr := not(boolean_condition)
+projection_list     := '*' | columns
+boolean_condition   :=  column op_symbol value 
+                        | function_expr 
+                        | and_expr 
+                        | or_expr 
+                        | not_expr
+op_symbol           := '=' | '>' | '<' | '>=' | '<=' | '!='
+function_expr       :=  attribute_exists (path) 
+                        | attribute_not_exists (path) 
+                        | attribute_type (path, type) 
+                        | begins_with (path, substr) 
+                        | contains (path, operand)
+                        | size (path)
+and_expr            := boolean_condition and boolean_condition
+or_expr             := boolean_condition or boolean_condition
+not_expr            := not(boolean_condition)
 ```
 Here is a simple example of use:
 ```java
