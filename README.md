@@ -9,18 +9,21 @@ query or scan request. The translator supports SQL queries of the form:
 where
 ```
 projection_list     := '*' | columns
-boolean_condition   :=  column op_symbol value 
+columns             := column [, column]*
+boolean_condition   := column op_symbol operand 
                         | function_expr 
+                        | in_expr
                         | and_expr 
                         | or_expr 
                         | not_expr
 op_symbol           := '=' | '>' | '<' | '>=' | '<=' | '!='
-function_expr       :=  attribute_exists (path) 
+function_expr       := attribute_exists (path) 
                         | attribute_not_exists (path) 
                         | attribute_type (path, type) 
                         | begins_with (path, substr) 
                         | contains (path, operand)
                         | size (path)
+in_expr             := column in (operand [, operand]*)
 and_expr            := boolean_condition and boolean_condition
 or_expr             := boolean_condition or boolean_condition
 not_expr            := not(boolean_condition)
